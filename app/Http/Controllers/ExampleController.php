@@ -18,9 +18,8 @@ class ExampleController extends Controller
 
     public function parse(Request $request)
     {
-        ini_set('default_socket_timeout', 600);
-        // $cvs = [url('/cv/1.pdf'), url('/cv/2.pdf')];
-        //$this->print_log("CV number #1", 2000);   
+        // ini_set('default_socket_timeout', 600);
+
         $cvs = $request->file('cvs');
 
         $output = "";
@@ -33,7 +32,7 @@ class ExampleController extends Controller
             // ob_start();
             foreach ($cvs as $key => $cv) {
 
-                $output = \CV::parse($cv);
+                // $output = \CV::parse($cv);
 
                 $response = $cv->getClientOriginalName();
                 // echo "<br> Line to show.".$response."\n";  
@@ -41,7 +40,7 @@ class ExampleController extends Controller
                 echo json_encode($response);
                 // ob_flush();
                 // flush();
-                // sleep(1);
+                sleep(4);
             }
 
           // echo "Done.";
