@@ -28,7 +28,7 @@
 	</tr>
 
 	</form>
-</table>
+</table><br>
  <div class="progress">
         <div class="progress-bar" role="progressbar" aria-valuenow="70"
              aria-valuemin="0" aria-valuemax="100" style="width:0">
@@ -77,7 +77,7 @@
                     progressResponse = response.substring(lastResponseLength);
                     lastResponseLength = response.length;
                     console.log(response.length);
-                    
+
                 }
 
                 var parsedResponse = JSON.parse(progressResponse);
