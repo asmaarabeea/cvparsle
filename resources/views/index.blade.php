@@ -25,10 +25,10 @@
  <div class="progress">
         <div class="progress-bar" role="progressbar" aria-valuenow="70"
              aria-valuemin="0" aria-valuemax="100" style="width:0">
-            <span id="fullResponse"></span>
+            <span class="fullResponse"></span>
         </div>
     </div>
-    <h4 id="progressTest"></h4>
+    <h4 class="progressTest"></h4>
 <!-- <div id="results"></div> -->
 </body>
 </html>
@@ -62,6 +62,7 @@
                 {
                     progressResponse = response;
                     lastResponseLength = response.length;
+                    console.log(response.length);
                 }
                 else
                 {
@@ -69,10 +70,10 @@
                     lastResponseLength = response.length;
                 }
                 var parsedResponse = JSON.parse(progressResponse);
-                $('#progressTest').text(progressResponse);
-                $('#fullResponse').text(parsedResponse.message);
+                $('.progressTest').text(progressResponse);
+                $('.fullResponse').text(parsedResponse.message);
                 $('.progress-bar').css('width', parsedResponse.progress + '%');
-            }
+            },
 
             success: function(response) {
                 // $("#results").append(response);
