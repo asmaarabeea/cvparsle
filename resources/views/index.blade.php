@@ -2,22 +2,29 @@
 <html>
 <head>
 	<title></title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" type="text/javascript"></script>
 
 </head>
 <body>
 <table width="600">
+	<br>
 	<form action="{{ url('/parse') }}" method="post" id="my_form" enctype="multipart/form-data">
 
 	<tr>
 	<td width="20%">Select file</td>
-	<td width="80%"><input type="file" name="cvs[]" id="cvs" multiple /></td>
+	<td width="80%">
+		<input type="file" name="cvs[]" id="cvs" multiple class="btn btn-info form-control"/>
+	</td>
 	</tr>
 
 	<tr>
 	<td>Submit</td>
-	<td><input type="submit" name="submit"  value="Submit" /></td>
+	<td>
+		<input type="submit" name="submit" value="Submit" class="btn btn-primary form-control" />
+	</td>
 	</tr>
 
 	</form>
@@ -25,7 +32,7 @@
  <div class="progress">
         <div class="progress-bar" role="progressbar" aria-valuenow="70"
              aria-valuemin="0" aria-valuemax="100" style="width:0">
-            <span class="fullResponse"></span>
+            <span id="fullResponse"></span>
         </div>
     </div>
     <h4 class="progressTest"></h4>
@@ -63,15 +70,19 @@
                     progressResponse = response;
                     lastResponseLength = response.length;
                     console.log(response.length);
+
                 }
                 else
                 {
                     progressResponse = response.substring(lastResponseLength);
                     lastResponseLength = response.length;
+                    console.log(response.length);
+                    
                 }
+
                 var parsedResponse = JSON.parse(progressResponse);
-                $('.progressTest').text(progressResponse);
-                $('.fullResponse').text(parsedResponse.message);
+                $('.progressTest').append(progressResponse + '<br>');
+                $('#fullResponse').append(parsedResponse.message + ' , ');
                 $('.progress-bar').css('width', parsedResponse.progress + '%');
             },
 
