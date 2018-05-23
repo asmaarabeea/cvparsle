@@ -17,4 +17,5 @@
 // });
 
 $router->get('/', "ExampleController@index");
+$router->get('/users', "ExampleController@getUsers");
 $router->post('/parse', "ExampleController@parse");
